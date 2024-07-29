@@ -1,0 +1,36 @@
+.course-list {
+  margin: 2rem;
+}
+
+.course-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-list ul li {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-list ul li h3 {
+  margin: 0;
+}
+
+.details-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,15 @@
+.course-details {
+  margin: 2rem;
+}
+
+.course-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-details ul li {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
