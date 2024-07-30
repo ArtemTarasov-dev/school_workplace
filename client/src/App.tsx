@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './NavBar';
-import CourseForm from './CourseForm';
-import CourseList from './CourseList';
-import CourseDetails from './CourseDetails';
-import './App.css';
-
-interface Course {
-  id: number;
-  title: string;
-  tasks: { id: number; description: string }[];
-}
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./NavBar";
+import CourseForm from "./CourseForm";
+import CourseList from "./pages/AllCoursePage";
+import CourseDetails from "./CourseDetails";
+import { Course } from "./types/Course";
+const courses: Course[] = [
+  {
+    id: 1,
+    title: "Introduction to Programming",
+    description: "Learn the basics of programming.",
+    price: 99.99,
+    tasks: [],
+  },
+  {
+    id: 2,
+    title: "Advanced JavaScript",
+    description: "Master advanced concepts in JavaScript.",
+    price: 149.99,
+    tasks: [],
+  },
+];
 
 const App: React.FC = () => {
-  const [courses, setCourses] = useState<Course[]>([]);
-
-  const addCourse = (course: Course) => {
-    setCourses([...courses, course]);
-  };
-
   return (
     <Router>
-      <NavBar />
-      <div className="main-content">
-        <Routes>
-          <Route path="/courses" element={<CourseList courses={courses} />} />
-          <Route path="/add-course" element={<CourseForm addCourse={addCourse} />} />
-          <Route path="/course/:id" element={<CourseDetails courses={courses} />} />
-        </Routes>
-      </div>
+      {/* <NavBar />
+      <div className="main-content"> */}
+      <Routes>
+        <Route path="/courses" element={<CourseList courses={courses} />} />
+        {/* <Route
+            path="/add-course"
+            element={<CourseForm addCourse={addCourse} />}
+          /> */}
+        <Route
+          path="/course/:id"
+          element={<CourseDetails courses={courses} />}
+        />
+      </Routes>
+      {/* / </div> */}
     </Router>
   );
 };

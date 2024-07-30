@@ -1,14 +1,6 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import './CourseDetails.css';
-
-interface Course {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  tasks: { id: number; description: string }[];
-}
+import React from "react";
+import { useParams } from "react-router-dom";
+import { Course } from "./types/Course";
 
 interface CourseDetailsProps {
   courses: Course[];

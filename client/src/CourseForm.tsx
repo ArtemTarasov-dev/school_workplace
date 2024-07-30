@@ -1,44 +1,34 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import './CourseForm.css';
-
-interface Task {
-  id: number;
-  description: string;
-}
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Course } from "./types/Course";
+import { Task } from "./types/Task";
 
 interface CourseFormProps {
   addCourse: (course: Course) => void;
 }
 
-interface Course {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  tasks: Task[];
-}
-
 const CourseForm: React.FC<CourseFormProps> = ({ addCourse }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [taskDescription, setTaskDescription] = useState<string>('');
+  const [taskDescription, setTaskDescription] = useState<string>("");
 
   const addTask = () => {
     setTasks([...tasks, { id: Date.now(), description: taskDescription }]);
-    setTaskDescription('');
+    setTaskDescription("");
   };
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      description: '',
-      price: '',
+      title: "",
+      description: "",
+      price: "",
     },
     validationSchema: Yup.object({
-      title: Yup.string().required('Required'),
-      description: Yup.string().required('Required'),
-      price: Yup.number().required('Required').positive('Price must be a positive number'),
+      title: Yup.string().required("Required"),
+      description: Yup.string().required("Required"),
+      price: Yup.number()
+        .required("Required")
+        .positive("Price must be a positive number"),
     }),
     onSubmit: (values, { resetForm }) => {
       const course: Course = {
@@ -75,7 +65,9 @@ const CourseForm: React.FC<CourseFormProps> = ({ addCourse }) => {
           onChange={formik.handleChange}
           value={formik.values.description}
         />
-        {formik.errors.description ? <div>{formik.errors.description}</div> : null}
+        {formik.errors.description ? (
+          <div>{formik.errors.description}</div>
+        ) : null}
       </div>
       <div>
         <label htmlFor="price">Course Price ($)</label>
@@ -97,7 +89,9 @@ const CourseForm: React.FC<CourseFormProps> = ({ addCourse }) => {
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
         />
-        <button type="button" onClick={addTask}>Add Task</button>
+        <button type="button" onClick={addTask}>
+          Add Task
+        </button>
       </div>
       <ul>
         {tasks.map((task) => (
