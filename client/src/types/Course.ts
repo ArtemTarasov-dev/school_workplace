@@ -1,3 +1,6 @@
+import { Task } from "./Task";
+
+
 export interface Course {
     id: number;
     title: string;

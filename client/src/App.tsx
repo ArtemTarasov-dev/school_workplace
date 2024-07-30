@@ -25,8 +25,8 @@ const courses: Course[] = [
 const App: React.FC = () => {
   return (
     <Router>
-      {/* <NavBar />
-      <div className="main-content"> */}
+      <NavBar/>
+      <div className="main-content">
       <Routes>
         <Route path="/courses" element={<CourseList courses={courses} />} />
         {/* <Route
@@ -38,7 +38,7 @@ const App: React.FC = () => {
           element={<CourseDetails courses={courses} />}
         />
       </Routes>
-      {/* / </div> */}
+      </div> 
     </Router>
   );
 };

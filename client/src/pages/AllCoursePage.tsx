@@ -1,7 +1,8 @@
 import React from "react";
 import { Course } from "../types/Course";
 import CourseCard from "../components/CourseCard";
-
+import { styled } from "styled-components";
+const StyleCourse = styled(Courses)
 const AllCoursePage: React.FC<{ courses: Course[] }> = ({ courses }) => {
   return (
     <div className="course-list">
